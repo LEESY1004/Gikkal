@@ -7,9 +7,8 @@ from player import Player
 def init_db(name):
     file_path = f"./db/{name}_db.txt"
     if os.path.exists(file_path):
-        # 추후 pw검증 개발
         print(f"Sign-in: {name}")
-        pl = player_txt_to_object(file_path)
+        pl = log.player_txt_to_object(file_path)
         return pl
 
     print(f"Sign-up: {name}")
@@ -19,14 +18,8 @@ def init_db(name):
     f.close()
     return pl
 
-def player_txt_to_object(file_path):
 
-    f = open(file_path, "r")
-    pl = log.player_txt_to_object(f.readlines())
-    f.close()
-    return pl
-
-def choose_mod():
+def choose_mod(pl):
     mode = input('''
 Choice game mode
 ----------------------------------------
@@ -35,8 +28,8 @@ Choice game mode
 ----------------------------------------
 ''')
     if mode == "1":
-        casual_menu.choice_menu()
+        casual_menu.choice_menu(pl)
 
 def lobby(pl):
     print(log.player_object_to_txt(pl))
-    choose_mod()
+    choose_mod(pl)

@@ -1,6 +1,6 @@
 import home
 
-def choice_menu():
+def choice_menu(pl):
     menu = input('''
 choice :
 ----------------------------------------
@@ -16,7 +16,7 @@ choice :
     elif menu == "2":
         print("..")
     elif menu == "3":
-        home.choose_mod()
+        home.lobby(pl)
     elif menu == "4":
         exit(0)
 

@@ -5,4 +5,33 @@ class Player:
         self.win_c = win_c
         self.lose_c = lose_c
         self.win_rate = win_rate
-    
+
+    def get_name(self):
+        return self.name
+
+    def set_name(self, name):
+        self._name = name
+
+    def get_curr_chip(self):
+        return self.curr_chip
+
+    def set_curr_chip(self, curr_chip):
+        self._curr_chip = curr_chip
+
+    def get_win_c(self):
+        return self.win_c
+
+    def set_win_c(self, win_c):
+        self._win_c = win_c
+
+    def get_lose_c(self):
+        return self.lose_c
+
+    def set_lose_c(self, lose_c):
+        self._lose_c = lose_c
+
+    def get_win_rate(self):
+        return self.win_rate
+
+    def set_win_rate(self, win_rate):
+        self._win_rate = win_rate

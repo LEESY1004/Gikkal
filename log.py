@@ -11,16 +11,18 @@ win count : {pl.win_c}
 lose count : {pl.lose_c}
 win rate : {pl.win_rate}%
 --------------------------------------
- '''
+'''
 
-def player_txt_to_object(lines):
+def player_txt_to_object(file_path):
+    f = open(file_path, "r")
     player_info = {}
-
-    for i in range(10):
+    lines = f.readlines()
+    for i in range(3, 8):
         dic = lines[i].strip().split(":")
         if len(dic) == 2:
             key, value = dic[0].strip(), dic[1].strip()
             player_info[key] = value 
+    f.close()
     return Player(
         player_info['name'],
         [int(item) for item in player_info['current chip'].strip("[]").split(',')],
