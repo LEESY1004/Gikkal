@@ -1,5 +1,8 @@
 import home
 
+# TODO 2. show game record 구현
+# TODO 1. Game Start 구현
+
 def choice_menu(pl):
     menu = input('''
 choice :
