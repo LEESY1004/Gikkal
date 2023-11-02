@@ -1,7 +1,7 @@
 import os
-import casual_menu
+import mode_casual.casual_menu as casual_menu
 import log 
-from player import Player
+from objects.player import Player
 
 
 def init_db(name):

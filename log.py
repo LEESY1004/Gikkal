@@ -1,4 +1,4 @@
-from player import Player
+from objects.player import Player
 # log 관련 사용할 메서드 모음
 
 def player_object_to_txt(pl):
@@ -23,6 +23,7 @@ def player_txt_to_object(file_path):
             key, value = dic[0].strip(), dic[1].strip()
             player_info[key] = value 
     f.close()
+
     return Player(
         player_info['name'],
         [int(item) for item in player_info['current chip'].strip("[]").split(',')],
