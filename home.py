@@ -5,7 +5,7 @@ from objects.player import Player
 
 
 def init_db(name):
-    file_path = f"./db/{name}_db.txt"
+    file_path = log.get_db_file_path(name)
     if os.path.exists(file_path):
         print(f"Sign-in: {name}")
         pl = log.player_txt_to_object(file_path)
