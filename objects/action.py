@@ -1,6 +1,4 @@
-from playgame import PlayGame
-play = PlayGame()
-
+from .playgame import PlayGame
 
 class Action:
     def deal_rule(self, playgame):

@@ -3,6 +3,21 @@ class PATH:
     TXT_FILE = './db/txt/'
     CSV_FILE = './db/csv/'
     ZIP_FILE = './db/zip/'
+    TXT_ET = '_db.txt'
+    CSV_ET = '_db.csv'
+    ZIP_ET = '_db.zip'
+
+class INFO:
+    NAME = 'name'
+    CURRENT_CHIP = 'current chip'
+    WIN_COUNT = 'win count'
+    LOSE_COUNT = 'lose count'
+    WIN_RATE = 'win rate'
+
+class FILE:
+    CSV = 'Csv'
+    ZIP = 'Zip'
+    TXT = 'Txt'
 
 class CLI_I:
     CHOICE_MENU = '''
@@ -14,15 +29,8 @@ choice :
 4. Exit
 ----------------------------------------
 '''
-
-def player_object_to_txt(pl):
-    return f'''
-Player Info
---------------------------------------
-name : {pl.name}
-current chip : [{pl.curr_chip[0]} | {pl.curr_chip[1]} | {pl.curr_chip[2]} | {pl.curr_chip[3]} | {pl.curr_chip[4]}]
-win count : {pl.win_c}
-lose count : {pl.lose_c}
-win rate : {pl.win_rate}%
---------------------------------------
+    EXPORT_FILE_MENU = '''
+1. Export CSV File
+2. Export Zip File
+3. Back to menu
 '''
