@@ -27,32 +27,13 @@ class PlayGame:
 
         return value
 
-    def play_blackjack(self):
+    def play_blackjack_set(self):
         deck = Deck()
         deck.shuffle()
 
         # 플레이어와 딜러에게 각각 2장의 카드를 나눠줌
         self.player_hand = deck.distributing(2)
         self.dealer_hand = deck.distributing(2)
-
-    def hit(self):
-        while True:
-            print("플레이어의 카드:", self.player_hand)
-            print("딜러의 카드:", [f"스페이드:{self.dealer_hand[0].split(':')[1]}", "알 수 없음"])  # 딜러의 첫 번째 카드만 공개
-
-            # 플레이어의 선택 (히트 또는 스테이)
-            choice = input("히트(1) 또는 스테이(2) 선택: ")
-            if choice == '1':
-                if not deck.cards:
-                    print("덱이 비어 있습니다.")
-                    break
-                self.player_hand.extend(deck.distributing(1))  # 히트: 카드 1장 뽑음
-            elif choice == '2':
-                break  # 스테이: 게임 종료
-
-        # 딜러의 선택 (카드 합이 17 이하일 때 히트)
-        while self.calculate_hand_value(self.dealer_hand) <= 17 and deck.cards:
-            self.dealer_hand.extend(deck.distributing(1))
 
     def result(self):
         player_value = self.calculate_hand_value(self.player_hand)
@@ -67,11 +48,17 @@ class PlayGame:
         else:
             print("무승부: 플레이어 {} vs. 딜러 {}".format(player_value, dealer_value))
 
+
+    def deal_rule(self):
+        # 딜러의 선택 (카드 합이 16 이하일 때 히트)
+        while self.calculate_hand_value(self.dealer_hand) <= 16 and deck.cards:
+            self.dealer_hand.extend(deck.distributing(1))
+
+
+
 # 클래스 인스턴스 생성
 
+
 game = PlayGame()
-
-
-game.play_blackjack()
-game.hit()
+game.play_blackjack_set()
 game.result()
