@@ -10,7 +10,7 @@ action.hit_stand(playgame)  # Action 클래스의 메소드 호출 시 PlayGame 
 player_value = playgame.calculate_hand_value(playgame.player_hand)
 dealer_value = playgame.calculate_hand_value(playgame.dealer_hand)
 
-# Result 클래스의 인스턴스를 생성하고 게임 결과를 전달
+
 class Result:
     def result(self, player_value, dealer_value):
         print("플레이어의 카드:", playgame.player_hand)

@@ -1,7 +1,9 @@
 from playgame import PlayGame
 play = PlayGame()
 
-def deal_rule(self, playgame):
+
+class Action:
+    def deal_rule(self, playgame):
         # 딜러의 선택 (카드 합이 17 이하일 때 히트)
         while playgame.calculate_hand_value(playgame.dealer_hand) <= 16 and playgame.deck.cards:
             playgame.dealer_hand.extend(playgame.deck.distributing(1))
@@ -13,7 +15,6 @@ def deal_rule(self, playgame):
                 dealer_value += 10
                 num_aces -= 1
 
-class Action:
     def hit_stand(self, playgame):
         while True:
             # 플레이어의 카드 합 계산
@@ -36,9 +37,9 @@ class Action:
                     print("덱이 비어 있습니다.")
                     break
                 playgame.player_hand.extend(playgame.deck.distributing(1))  # 히트: 카드 1장 뽑음
-                deal_rule(self, playgame)
+                self.deal_rule(playgame)
             elif choice == '2':
-                deal_rule(self, playgame)
+                self. deal_rule(playgame)
                 break  # 스테이: 게임 종료
 
 

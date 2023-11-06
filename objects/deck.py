@@ -15,6 +15,6 @@ class Deck:
 
     def distributing(self, num_cards):
         return [self.cards.pop() for i in range(num_cards)]
-    
+# 클래스 인스턴스 생성   
 deck = Deck()
 deck.shuffle()
