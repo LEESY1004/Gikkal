@@ -3,6 +3,7 @@ import pandas as pd
 import shutil
 import zipfile
 import os
+from env import PATH
 
 # log 관련 사용할 메서드 모음
 
@@ -38,23 +39,34 @@ def player_txt_to_object(file_path):
     )
 
 def get_db_file_path(name):
-    return f"./db/{name}_db.txt"
+    return f"{PATH.TXT_FILE}{name}_db.txt"
 
 def export_txt_to_csv(name, path):
-    print(path)
     read_file = pd.read_csv(path)
-    print(read_file)
-    read_file.to_csv(f'./db/csv/{name}_db.csv', index=None)
+    read_file.to_csv(f'{PATH.CSV_FILE}{name}_db.csv', index=None)
+    return f'{PATH.CSV_FILE}{name}_db.csv'
 
-def download_all_log(directory_path):
+def download_all_log_db():
+    db_path = PATH.TXT_FILE
+    zip_name = "logs.zip"
+
+    for dir_path, dirs, files in os.walk(db_path):
+        print(f'''
+Select file range. ex) 2 4
+----------------------------------------''')
+        for file in files:
+            file_path = os.path.join(dir_path, file)
+            print(file_path)
+        print('----------------------------------------')
+
     try:
-        with zipfile.ZipFile('logs.zip', 'w', zipfile.ZIP_DEFLATED) as zipf:
-            for dir_path, dirs, files in os.walk(directory_path):
+        with zipfile.ZipFile(zip_name, 'w', zipfile.ZIP_DEFLATED) as zipf:
+            for dir_path, dirs, files in os.walk(db_path):
                 for file in files:
                     file_path = os.path.join(dir_path, file)
                     zipf.write(file_path, os.path.relpath(file_path, dir_path))
         
-        shutil.move('logs.zip', './db/logs.zip')
-        print("Success")
+        shutil.move(zip_name, f'{PATH.ZIP_FILE}{zip_name}')
+        return f'{PATH.ZIP_FILE}{zip_name}'
     except Exception as e:
         print(f"error: {e}")

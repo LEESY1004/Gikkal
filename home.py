@@ -29,6 +29,9 @@ Choice game mode
 ''')
     if mode == "1":
         casual_menu.choice_menu(pl)
+    if mode == "2":
+        print("Implementing...")
+        choose_mod(pl)
 
 def lobby(pl):
     print(log.player_object_to_txt(pl))
