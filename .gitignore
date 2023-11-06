@@ -1,5 +1,10 @@
-db/*
+db/csv/*
+db/txt/*
+db/zip/*
 !db/_
+!db/csv/_
+!db/txt/_
+!db/zip/_
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

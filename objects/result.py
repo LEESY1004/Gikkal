@@ -11,8 +11,6 @@ def game_start(pl):
     result = Result(pg)
     result.result(player_value, dealer_value)
 
-
-
 class Result:
     def __init__(self, pg):
         self.pg = pg
@@ -26,4 +24,3 @@ class Result:
             print("패배: 플레이어 {} vs. 딜러 {}".format(player_value, dealer_value))
         elif dealer_value > 21 or (player_value <= 21 and player_value > dealer_value):
             print("승리: 플레이어 {} vs. 딜러 {}".format(player_value, dealer_value))
-
