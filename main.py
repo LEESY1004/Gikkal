@@ -1,5 +1,5 @@
 import home
-import log
+import features
 
 name = input("Please input your name : ")
 pl = home.init_db(name)

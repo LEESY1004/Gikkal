@@ -1,15 +1,24 @@
 from .playgame import PlayGame
 from .action import Action
+from env import CLI_I
+import features
 
 def game_start(pl):
-    pg = PlayGame()
-    action = Action()
-    pg.play_blackjack_set()
-    action.hit_stand(pg)  # Action 클래스의 메소드 호출 시 PlayGame 인스턴스를 전달
-    player_value = pg.calculate_hand_value(pg.player_hand)
-    dealer_value = pg.calculate_hand_value(pg.dealer_hand)
-    result = Result(pg)
-    result.result(player_value, dealer_value)
+    choice = input(CLI_I.GAME_START_MENU)
+    if choice == "1":
+        pl_count = input("Player Count: ")
+        # TODO pl_count로 bot 개발 부탁 드립니다.
+
+        pg = PlayGame()
+        action = Action()
+        pg.play_blackjack_set()
+        action.hit_stand(pg)  # Action 클래스의 메소드 호출 시 PlayGame 인스턴스를 전달
+        player_value = pg.calculate_hand_value(pg.player_hand)
+        dealer_value = pg.calculate_hand_value(pg.dealer_hand)
+        result = Result(pg)
+        result.result(player_value, dealer_value)
+    elif choice == "2":
+        features.back_to_home(pl)
 
 class Result:
     def __init__(self, pg):

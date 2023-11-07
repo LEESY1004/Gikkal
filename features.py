@@ -4,8 +4,7 @@ import shutil
 import zipfile
 import os
 from env import PATH, INFO
-
-# log 관련 사용할 메서드 모음
+import home
 
 def player_object_to_txt(pl):
     return f'''
@@ -61,12 +60,12 @@ def download_all_log(name, path):
     except Exception as e:
         print(f"error: {e}")
 
-# 하얀색: 1달러 | 5%
-# 분홍색: 2달러 50센트[6] |5%
-# 빨간색: 5달러 | 10%
-# 파란색: 10달러 | 20 %
-# 초록색: 25달러 | 30 %
-# 검은색: 100달러 | 30%
+# White: 1$ | 5%
+# Pink: 2$50¢ | 5%
+# Red: 5$ | 10%
+# Blue: 10$ | 20%
+# Green: 25$ | 30%
+# Black: 100$ | 30%
 def calc_chip(money):
     return [(int)((money * 0.3) / 100),
             (int)((money * 0.3) / 25),
@@ -91,5 +90,5 @@ def player_info_update(pl):
     with open(file_path, "w") as f:
         f.writelines(lines)
 
-
-
+def back_to_home(pl):
+    home.lobby(pl)

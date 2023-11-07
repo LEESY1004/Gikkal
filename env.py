@@ -40,5 +40,10 @@ Choice game mode
     EXPORT_FILE_MENU = '''
 1. Export CSV File
 2. Export Zip File
-3. Back to menu
+3. Back to home
+'''
+    GAME_START_MENU = '''
+----------------------------------------
+1. Select Player Count and Game Start
+2. Back to home
 '''
