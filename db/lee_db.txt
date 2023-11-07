@@ -1,9 +1,0 @@
-
-Player Info
---------------------------------------
-name : lee
-current chip : [3 | 2 | 5 | 0 | 0]
-win count : 0
-lose count : 6
-win rate : 24.0%
---------------------------------------

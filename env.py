@@ -29,6 +29,14 @@ choice :
 4. Exit
 ----------------------------------------
 '''
+    DB_MENU = '''
+Choice game mode
+----------------------------------------
+1. Casual
+2. !Basic! (Not yet...)
+----------------------------------------
+'''
+
     EXPORT_FILE_MENU = '''
 1. Export CSV File
 2. Export Zip File

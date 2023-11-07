@@ -2,7 +2,7 @@ import os
 import mode_casual.casual_menu as casual_menu
 import log 
 from objects.player import Player
-
+from env import CLI_I
 
 def init_db(name):
     file_path = log.get_db_file_path(name)
@@ -20,13 +20,7 @@ def init_db(name):
 
 
 def choose_mod(pl):
-    mode = input('''
-Choice game mode
-----------------------------------------
-1. Casual
-2. !Basic! (Not yet...)
-----------------------------------------
-''')
+    mode = input(CLI_I.DB_MENU)
     if mode == "1":
         casual_menu.choice_menu(pl)
     if mode == "2":

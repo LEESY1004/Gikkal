@@ -12,7 +12,7 @@ def player_object_to_txt(pl):
 Player Info
 --------------------------------------
 {INFO.NAME} : {pl.name}
-{INFO.CURRENT_CHIP} : [{pl.curr_chip[0]} | {pl.curr_chip[1]} | {pl.curr_chip[2]} | {pl.curr_chip[3]} | {pl.curr_chip[4]}]
+{INFO.CURRENT_CHIP} : [{pl.curr_chip[0]} | {pl.curr_chip[1]} | {pl.curr_chip[2]} | {pl.curr_chip[3]} | {pl.curr_chip[4]} | {pl.curr_chip[5]}]
 {INFO.WIN_COUNT} : {pl.win_c}
 {INFO.LOSE_COUNT} : {pl.lose_c}
 {INFO.WIN_RATE} : {pl.win_rate}%
@@ -60,3 +60,36 @@ def download_all_log(name, path):
         return f'{PATH.ZIP_FILE}{zip_name}'
     except Exception as e:
         print(f"error: {e}")
+
+# 하얀색: 1달러 | 5%
+# 분홍색: 2달러 50센트[6] |5%
+# 빨간색: 5달러 | 10%
+# 파란색: 10달러 | 20 %
+# 초록색: 25달러 | 30 %
+# 검은색: 100달러 | 30%
+def calc_chip(money):
+    return [(int)((money * 0.3) / 100),
+            (int)((money * 0.3) / 25),
+            (int)((money * 0.2) / 10),
+            (int)((money * 0.1) / 5),
+            (int)((money * 0.05) / 2.5),
+            (int)((money * 0.05) / 1)]
+
+def calc_money(chips):
+    return (chips[0] * 100) + (chips[1] * 25) + (chips[2] * 10) + (chips[3] * 5) + (chips[4] * 2.5) + (chips[5] * 1)
+
+def player_info_update(pl):
+    file_path = get_db_file_path(pl.name)
+    with open(file_path, "r") as f:
+        lines = f.readlines()
+
+    lines[3] = f'{INFO.NAME} : {pl.name}\n'
+    lines[4] = f'{INFO.CURRENT_CHIP} : [{pl.curr_chip[0]} | {pl.curr_chip[1]} | {pl.curr_chip[2]} | {pl.curr_chip[3]} | {pl.curr_chip[4]} | {pl.curr_chip[5]}]\n'
+    lines[5] = f'{INFO.WIN_COUNT} : {pl.win_c}\n'
+    lines[6] = f'{INFO.LOSE_COUNT} : {pl.lose_c}\n'
+    lines[7] = f'{INFO.WIN_RATE} : {pl.win_rate}%\n'
+    with open(file_path, "w") as f:
+        f.writelines(lines)
+
+
+
