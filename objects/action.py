@@ -31,9 +31,6 @@ class Action:
             # 플레이어의 선택 (히트 또는 스테이)
             choice = input("히트(1) 또는 스테이(2) 선택: ")
             if choice == '1':
-                if not playgame.deck.cards:
-                    print("덱이 비어 있습니다.")
-                    break
                 playgame.player_hand.extend(playgame.deck.distributing(1))  # 히트: 카드 1장 뽑음
                 self.deal_rule(playgame)
             elif choice == '2':
