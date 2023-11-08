@@ -3,7 +3,7 @@ from .playgame import PlayGame
 class Action:
     def deal_rule(self, playgame):
         # 딜러의 선택 (카드 합이 17 이하일 때 히트)
-        while playgame.calculate_hand_value(playgame.dealer_hand) <= 16 and playgame.deck.cards:
+        while playgame.calculate_hand_value(playgame.dealer_hand) <= 17 and playgame.deck.cards:
             playgame.dealer_hand.extend(playgame.deck.distributing(1))
             
             # 딜러의 A 카드 처리 (A는 11 또는 1로 계산)
