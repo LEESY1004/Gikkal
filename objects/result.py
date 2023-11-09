@@ -1,7 +1,7 @@
 from .playgame import PlayGame
 from .action import Action
 from env import CLI_I
-import features
+import features.logs as logs
 
 def game_start(pl):
     choice = input(CLI_I.GAME_START_MENU)
@@ -18,7 +18,7 @@ def game_start(pl):
         result = Result(pg)
         result.result(player_value, dealer_value)
     elif choice == "2":
-        features.back_to_home(pl)
+        logs.back_to_home(pl)
 
 class Result:
     def __init__(self, pg):

@@ -1,5 +1,5 @@
 import home
-import features
+import features.logs as logs
 from env import (CLI_I, FILE)
 import objects.result as game
 
@@ -16,15 +16,15 @@ def choice_menu(pl):
         elif num == "3": 
             home.lobby(pl)          
     elif menu == "3":
-        features.back_to_home(pl)
+        logs.back_to_home(pl)
     elif menu == "4":
         exit(0)
 
 def export_file(category,  name):
     message = ""
     if category == FILE.CSV:
-        message = features.export_txt_to_csv(name, features.get_db_file_path(name))
+        message = logs.export_txt_to_csv(name, logs.get_db_file_path(name))
     elif category == FILE.ZIP:
-        message = features.download_all_log(name, features.get_db_file_path(name))
+        message = logs.download_all_log(name, logs.get_db_file_path(name))
     print(f"Successfully export {category} file!!")
     print(f"{category} file dir: ", message)

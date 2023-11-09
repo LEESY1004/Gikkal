@@ -60,23 +60,6 @@ def download_all_log(name, path):
     except Exception as e:
         print(f"error: {e}")
 
-# White: 1$ | 5%
-# Pink: 2$50¢ | 5%
-# Red: 5$ | 10%
-# Blue: 10$ | 20%
-# Green: 25$ | 30%
-# Black: 100$ | 30%
-def calc_chip(money):
-    return [(int)((money * 0.3) / 100),
-            (int)((money * 0.3) / 25),
-            (int)((money * 0.2) / 10),
-            (int)((money * 0.1) / 5),
-            (int)((money * 0.05) / 2.5),
-            (int)((money * 0.05) / 1)]
-
-def calc_money(chips): #calc_money(chips) => chips배열 받아 money($)로 반환함
-    return (chips[0] * 100) + (chips[1] * 25) + (chips[2] * 10) + (chips[3] * 5) + (chips[4] * 2.5) + (chips[5] * 1)
-
 def player_info_update(pl): #player_info_update(pl) => pl객체 파라미터로 넘어오면 해당 객체 내용으로 Player Info db파일 업데이트함
     file_path = get_db_file_path(pl.name)
     with open(file_path, "r") as f:
