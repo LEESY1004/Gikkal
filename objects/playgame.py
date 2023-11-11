@@ -1,13 +1,16 @@
 from .deck import Deck
+from .batting import Batting
 
 class PlayGame:
     def __init__(self):
         self.player_hand = []
         self.dealer_hand = []
         self.deck = Deck()
+        self.batting = Batting()
         self.play_blackjack_set()
 
     def calculate_hand_value(self, hand):
+        self.batting.get_bet_amount()  
         value = 0
         num_aces = 0
 

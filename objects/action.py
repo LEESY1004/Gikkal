@@ -36,6 +36,7 @@ class Action:
             elif choice == '2':
                 self. deal_rule(playgame)
                 break  # 스테이: 게임 종료
+        
 
 
     

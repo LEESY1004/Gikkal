@@ -3,9 +3,9 @@ import features.game as game
 from objects.card import Card
 from objects.player import Player
 
-# name = input("Please input your name : ")
-# pl = home.init_db(name)
-# home.lobby(pl)
+name = input("Please input your name : ")
+pl = home.init_db(name)
+home.lobby(pl)
 dealer_cards = [Card("Diamonds", "King"), Card("Diamonds", "King"), Card("Diamonds", "King"), Card("Diamonds", "King"), Card("Diamonds", "King"), Card("Diamonds", "King")]
 cards1 = [Card("Diamonds", "King"),Card("Diamonds", "King"),Card("Diamonds", "King"), Card("Diamonds", "King"), Card("Diamonds", "King")]
 cards2 = [Card("Diamonds", "Jack"), Card("Diamonds", "Jack"),Card("Diamonds", "Jack"), Card("Diamonds", "Jack"), Card("Diamonds", "King"), Card("Diamonds", "King")]
