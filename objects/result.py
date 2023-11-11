@@ -1,28 +1,40 @@
 from .playgame import PlayGame
 from .action import Action
 from val import CLI_I
-import features.logs as logs
+from .batting import Batting
+import features
 
 def game_start(pl):
     choice = input(CLI_I.GAME_START_MENU)
     if choice == "1":
-        pl_count = input("Player Count (1 ~ 3): ")
+        pl_count = input("Player Count: ")
         # TODO pl_count로 bot 개발 부탁 드립니다.
 
         pg = PlayGame()
         action = Action()
+        betting = Batting()
+
         pg.play_blackjack_set()
+
+        # 배팅을 받음
+        betting.get_bet_amount()
+
         action.hit_stand(pg)  # Action 클래스의 메소드 호출 시 PlayGame 인스턴스를 전달
         player_value = pg.calculate_hand_value(pg.player_hand)
         dealer_value = pg.calculate_hand_value(pg.dealer_hand)
+
+        # 배팅 결과 업데이트
         result = Result(pg)
-        result.result(player_value, dealer_value)
+        game_result = result.result(player_value, dealer_value)
+        betting.update_total_money(game_result)
+
     elif choice == "2":
-        logs.back_to_home(pl)
+        features.back_to_home(pl)
 
 class Result:
     def __init__(self, pg):
         self.pg = pg
+
     def result(self, player_value, dealer_value):
         print("플레이어의 카드:", self.pg.player_hand)
         print("딜러의 카드:", self.pg.dealer_hand)
