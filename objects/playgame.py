@@ -9,8 +9,7 @@ class PlayGame:
         self.batting = Batting()
         self.play_blackjack_set()
 
-    def calculate_hand_value(self, hand):
-        self.batting.get_bet_amount()  
+    def calculate_hand_value(self, hand): 
         value = 0
         num_aces = 0
 
@@ -38,3 +37,5 @@ class PlayGame:
         # 플레이어와 딜러에게 각각 2장의 카드를 나눠줌
         self.player_hand = deck.distributing(2)
         self.dealer_hand = deck.distributing(2)
+
+        self.batting.get_bet_amount()
