@@ -83,9 +83,8 @@ def padding_card_arr(players, cards_arr):
                     cat_card[i].append(cardOb.ascii_version_of_card(card)[j])
                 cat_card[i].append(width_each_card)
             
-            cat_card[i].append(multi_player_each_margin[len(cards_arr)] + '\b' * (len(cards_arr[q])*10)) # 현재보다 앞에 있는 카드개수 만큼 +8 해야함.
+            cat_card[i].append(multi_player_each_margin[len(cards_arr)] + '\b' * (len(cards_arr[q])*10))
             
-
     print_cards(cat_card, multi_player_start_margin[len(cards_arr)])
 
 

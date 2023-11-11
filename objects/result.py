@@ -1,12 +1,12 @@
 from .playgame import PlayGame
 from .action import Action
-from env import CLI_I
+from val import CLI_I
 import features.logs as logs
 
 def game_start(pl):
     choice = input(CLI_I.GAME_START_MENU)
     if choice == "1":
-        pl_count = input("Player Count: ")
+        pl_count = input("Player Count (1 ~ 3): ")
         # TODO pl_count로 bot 개발 부탁 드립니다.
 
         pg = PlayGame()

@@ -3,7 +3,7 @@ import pandas as pd
 import shutil
 import zipfile
 import os
-from env import PATH, INFO
+from val import PATH, INFO
 import home
 
 def player_object_to_txt(pl):

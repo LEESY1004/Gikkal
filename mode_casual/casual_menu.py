@@ -1,6 +1,6 @@
 import home
 import features.logs as logs
-from env import (CLI_I, FILE)
+from val import (CLI_I, FILE)
 import objects.result as game
 
 def choice_menu(pl):

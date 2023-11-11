@@ -2,7 +2,7 @@ import os
 import mode_casual.casual_menu as casual_menu
 import features.logs as logs 
 from objects.player import Player
-from env import CLI_I
+from val import CLI_I
 
 def init_db(name):
     file_path = logs.get_db_file_path(name)
