@@ -7,6 +7,8 @@ class PlayGame:
         self.dealer_hand = []
         self.deck = Deck()
         self.batting = Batting()
+        self.betting_taken = False
+
         self.play_blackjack_set()
 
     def calculate_hand_value(self, hand): 
@@ -31,11 +33,7 @@ class PlayGame:
         return value
 
     def play_blackjack_set(self):
-        deck = Deck()
-        deck.shuffle()
-
-        # 플레이어와 딜러에게 각각 2장의 카드를 나눠줌
-        self.player_hand = deck.distributing(2)
-        self.dealer_hand = deck.distributing(2)
-
-        self.batting.get_bet_amount()
+        if not self.betting_taken:
+            # 플레이어와 딜러에게 각각 2장의 카드를 나눠줌
+            self.player_hand = self.deck.distributing(2)
+            self.dealer_hand = self.deck.distributing(2)
