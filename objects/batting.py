@@ -1,4 +1,3 @@
-from .result import Result
 
 class Batting:
     def __init__(self):
@@ -16,14 +15,12 @@ class Batting:
                     print("1부터 1000 사이의 값을 입력하고 현재 가진 금액 이하로 배팅하세요.")
             except ValueError:
                 print("유효한 숫자를 입력하세요.")
-    def update_total_money(self, result):
-        if result == 1:
+    def update_total_money(self, rs):
+        if rs == 1:
             self.total_money += self.current_bet  # 무승부
-        elif result == -1:
+        elif rs == -1:
             self.total_money -= self.current_bet  # 패배
-        elif result == 2:
+        elif rs == 2:
             self.total_money += (2 * self.current_bet)  # 승리
 
         print("현재 가진 금액: ${}".format(self.total_money))
-
-
