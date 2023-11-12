@@ -15,6 +15,8 @@ class Action:
                 dealer_value += 10
                 num_aces -= 1
 
+                
+
     def hit_stand(self, playgame, pl):
         while True:
             # 플레이어의 카드 합 계산
