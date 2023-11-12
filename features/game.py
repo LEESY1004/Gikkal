@@ -30,7 +30,7 @@ def show_game(dealer_cards, players, cards_arr):
 
     if len(players) == 1:
         single_player_card_print(dealer_padding, players[0].name, cards_arr[0], single_player_card_padding[len(cards_arr[0])])
-    padding_card_arr(players, cards_arr)
+    else: padding_card_arr(players, cards_arr)
 
 def padding_card_arr(players, cards_arr):
     cat_card = [[] for i in range(9)]

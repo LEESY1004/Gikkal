@@ -2,8 +2,8 @@ import random
 
 class Deck:
     def __init__(self):
-        self.suits = ['하트', '다이아몬드', '스페이드', '클로버']
-        self.ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+        self.suits = ['Spades', 'Diamonds', 'Hearts', 'Clubs']
+        self.ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
         self.cards = [f'{suit}:{rank}' for suit in self.suits for rank in self.ranks]
         self.shuffle()
             

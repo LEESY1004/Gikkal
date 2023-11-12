@@ -1,4 +1,6 @@
 from .playgame import PlayGame
+from .card import Card
+import features.game as game
 
 class Action:
     def deal_rule(self, playgame):
@@ -13,12 +15,28 @@ class Action:
                 dealer_value += 10
                 num_aces -= 1
 
-    def hit_stand(self, playgame):
+    def hit_stand(self, playgame, pl):
         while True:
             # 플레이어의 카드 합 계산
             player_value = playgame.calculate_hand_value(playgame.player_hand)
-            print("플레이어의 카드:", playgame.player_hand)
+            
+            
+            # ## !<-- Player가 1명일 때 구현, 작업할 때 아래 코드 주석하고 작업 부탁드립니다. -->
 
+            # cards_arr = []
+            # cards = []
+            # for c in playgame.player_hand:
+            #     card = c.split(':')
+            #     cards.append(Card(card[0], card[1]))
+            # cards_arr.append(cards)
+
+            # players = [pl]
+            # dealer_cards = [Card("Diamonds", "King"), Card("Diamonds", "King"), Card("Diamonds", "King"), Card("Diamonds", "King"), Card("Diamonds", "King"), Card("Diamonds", "King")]
+            # game.show_game(dealer_cards, players, cards_arr)
+
+            # ## -->
+
+            print("플레이어의 카드:", playgame.player_hand)
             if player_value > 21:
                 print("패배: 플레이어 {} vs. 딜러 {}".format(player_value, playgame.calculate_hand_value(playgame.dealer_hand)))
                 break  # 플레이어가 21을 넘으면 패배 처리하고 종료

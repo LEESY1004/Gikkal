@@ -19,7 +19,7 @@ def game_start(pl):
         # 배팅을 받음
         betting.get_bet_amount()
 
-        action.hit_stand(pg)  # Action 클래스의 메소드 호출 시 PlayGame 인스턴스를 전달
+        action.hit_stand(pg, pl)  # Action 클래스의 메소드 호출 시 PlayGame 인스턴스를 전달
         player_value = pg.calculate_hand_value(pg.player_hand)
         dealer_value = pg.calculate_hand_value(pg.dealer_hand)
 
