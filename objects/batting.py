@@ -25,7 +25,7 @@ class Batting:
         if result == 1:
             self.total_money +=self.current_bet*1
         elif result == -1:
-            self.total_money += self.current_bet*-1
+            self.total_money += self.current_bet*0
         elif result == 2:
             self.total_money += self.current_bet*2
 
