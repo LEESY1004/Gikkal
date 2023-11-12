@@ -11,6 +11,7 @@ class Batting:
                 bet_amount = int(input("배팅할 금액을 입력하세요 (1~1000): "))
                 if 1 <= bet_amount <= 1000 and bet_amount <= self.total_money:
                     self.current_bet = bet_amount
+                    self.total_money -=bet_amount
                     self.bet_taken = True
                     return bet_amount
                 else:
@@ -22,11 +23,11 @@ class Batting:
 
     def update_total_money(self, result):
         if result == 1:
-            self.total_money += self.current_bet
+            self.total_money +=self.current_bet*1
         elif result == -1:
-            self.total_money -= self.current_bet
+            self.total_money += self.current_bet*-1
         elif result == 2:
-            self.total_money += (2 * self.current_bet)
+            self.total_money += self.current_bet*2
 
         print("현재 가진 금액: ${}".format(self.total_money))
         self.bet_taken = False
