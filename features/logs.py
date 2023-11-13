@@ -7,7 +7,6 @@ from val import PATH, INFO
 import home
 
 def player_object_to_txt(pl):
-    print(pl)
     return f'''
 Player Info
 --------------------------------------
