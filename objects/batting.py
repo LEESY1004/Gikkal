@@ -1,12 +1,11 @@
-
 class Batting:
     def __init__(self):
         self.current_bet = 0
         self.total_money = 1000
-        self.bet_taken = False
+        self.bet_taken = False # 플래그 설정
 
     def get_bet_amount(self):
-        if not self.bet_taken:
+        if not self.bet_taken: # 플래그 활용
             try:
                 bet_amount = int(input("배팅할 금액을 입력하세요 (1~1000): "))
                 if 1 <= bet_amount <= 1000 and bet_amount <= self.total_money:
@@ -30,4 +29,4 @@ class Batting:
             self.total_money += self.current_bet*2
 
         print("현재 가진 금액: ${}".format(self.total_money))
-        self.bet_taken = False
+        self.bet_taken = False #다시 bet 끝나면 초기화

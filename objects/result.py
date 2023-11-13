@@ -61,22 +61,17 @@ class Result:
         self.pg = pg
 
     def result_player(self, player_value=None, dealer_value=None, auto_player_values=None): # 플래그 선언
+        #player_value가 매개변수를 통해 주어지면 값이 None이 아님
         if player_value is not None:
-            print("플레이어의 카드:", self.pg.player_hand)
-        elif isinstance(auto_player_values, list):
+            print("플레이어의 카드:", self.pg.player_hand) #직접 플레이어 값 출력
+        elif isinstance(auto_player_values, list): #자동 플레이어 값 출력
             for i, value in enumerate(auto_player_values, start=2):
                 print(f"자동 플레이어 {i}의 카드:", value)
         elif dealer_value is not None:
-            print("딜러의 카드:", self.pg.dealer_hand)
+            print("딜러의 카드:", self.pg.dealer_hand) #딜러 값 출력
 
     def result(self, player_value, dealer_value, auto_player_values=None):
         self.result_player(player_value=player_value)
-
-        if auto_player_values is not None:
-            for i, value in enumerate(auto_player_values, start=2):
-                self.result_player(auto_player_values=value)
-
-        self.result_player(dealer_value=dealer_value)
 
         if dealer_value == player_value or (dealer_value > 21 and player_value > 21):
             print("무승부: 플레이어 {} vs. 딜러 {}".format(player_value, dealer_value))
