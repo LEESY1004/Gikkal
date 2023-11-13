@@ -1,5 +1,5 @@
 from .deck import Deck
-from .batting import Batting
+from .batting import Batting ###수정
 
 
 class PlayGame:
@@ -7,8 +7,8 @@ class PlayGame:
         self.player_hand = [] # player_hand에 리스트로 저장
         self.dealer_hand = [] # dealer_hand에 리스트로 저장
         self.deck = Deck()
-        self.batting = Batting() #batting 선언
-        self.betting_taken = False # 플래그 역할을 하는 변수로 처음에는 아직 베팅이 이루어지지 않았기 때문에 False로 설정
+        self.batting = Batting() #batting 선언 ###수정
+        self.betting_taken = False # 플래그 역할을 하는 변수로 처음에는 아직 베팅이 이루어지지 않았기 때문에 False로 설정 ### 수정
         self.play_blackjack_set() # 객체가 만들어지면 자동으로 실행되도록 설정 
 
     def calculate_hand_value(self, hand): # 카드를 int형으로 계산하는 함수
