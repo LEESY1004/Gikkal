@@ -2,14 +2,13 @@ from .playgame import PlayGame
 from .action import Action
 from val import CLI_I
 from .batting import Batting
-import features
+import features.calc_chip as c
 
 def game_start(pl):
     choice = input(CLI_I.GAME_START_MENU)
     if choice == "1":
-        betting = Batting()
-        
         while True:
+            betting = Batting(c.calc_money(pl.get_curr_chip()))
             pg = PlayGame()
             action = Action() 
 
@@ -28,7 +27,7 @@ def game_start(pl):
             # 플레이어 결과 출력
             result = Result(pg)
             rs = result.result(player_value, dealer_value)
-            betting.update_total_money(rs) #betting 결과 반환
+            betting.update_total_money(rs, pl) #betting 결과 반환
             
             play_again = input("게임을 더 하시겠습니까? (y/n): ")
             if play_again.lower() != 'y':

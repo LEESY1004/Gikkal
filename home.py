@@ -1,6 +1,7 @@
 import os
 import mode_casual.casual_menu as casual_menu
 import features.logs as logs 
+import features.calc_chip as calc
 from objects.player import Player
 from val import CLI_I
 
@@ -23,8 +24,11 @@ def choose_mod(pl):
     mode = input(CLI_I.DB_MENU)
     if mode == "1":
         casual_menu.choice_menu(pl)
-    if mode == "2":
+    elif mode == "2":
         print("Implementing...")
+        choose_mod(pl)
+    elif mode == "3":
+        print('current money: ', (int)(calc.calc_money(pl.get_curr_chip())),'$')
         choose_mod(pl)
 
 def lobby(pl):
