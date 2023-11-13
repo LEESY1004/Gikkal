@@ -30,7 +30,7 @@ class Action:
 
             print(ascii_version_of_hidden_card(*dealer_cards))
             players = [pl]
-            game.show_game(dealer_cards, players, cards_arr,False)
+            game.show_game(dealer_cards, players, cards_arr, False)
 
             ## -->
 
@@ -47,7 +47,10 @@ class Action:
                 playgame.player_hand.extend(playgame.deck.distributing(1))  # 히트: 카드 1장 뽑음
             elif choice == '2':
                 self.deal_rule(playgame) #플레이어 선택에 따른 딜러의 행동(17이하면 계속 히트)
-                game.show_game(dealer_cards, players, cards_arr,True)
+                for c in playgame.dealer_hand[2:]:
+                    card = c.split(':')
+                    dealer_cards.append(Card(card[0], card[1]))
+                game.show_game(dealer_cards, players, cards_arr, True)
                 break  # 스테이: 게임 종료
         
 
