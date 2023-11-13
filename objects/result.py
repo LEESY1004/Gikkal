@@ -3,6 +3,7 @@ from .action import Action
 from val import CLI_I
 from .batting import Batting
 import features.calc_chip as c
+import features.logs as feature_1
 
 def game_start(pl):
     choice = input(CLI_I.GAME_START_MENU)
@@ -35,7 +36,7 @@ def game_start(pl):
                 break
 
     elif choice == "2":
-        features.back_to_home(pl)
+        feature_1.back_to_home(pl)
 
 class Result:
     def __init__(self, pg):
