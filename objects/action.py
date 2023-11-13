@@ -1,5 +1,5 @@
 from .playgame import PlayGame
-from .card import Card
+from .card import (Card, ascii_version_of_hidden_card)
 import features.game as game
 
 class Action:
@@ -28,18 +28,18 @@ class Action:
                 card = d.split(":")
                 dealer_cards.append(Card(card[0], card[1]))
 
+            print(ascii_version_of_hidden_card(*dealer_cards))
             players = [pl]
-            game.show_game(dealer_cards, players, cards_arr)
+            game.show_game(dealer_cards, players, cards_arr,False)
 
             ## -->
 
-            print("플레이어의 카드:", playgame.player_hand)
+        
             if player_value > 21:
                 print("패배: 플레이어 {} vs. 딜러 {}".format(player_value, playgame.calculate_hand_value(playgame.dealer_hand)))
                 break  # 플레이어가 21을 넘으면 패배 처리하고 종료
 
-            if playgame.dealer_hand:
-                print("딜러의 카드:", [f"{playgame.dealer_hand[0].split(':')[0]}:{playgame.dealer_hand[0].split(':')[1]}", "알 수 없음"])
+
 
             # 플레이어의 선택 (히트 또는 스테이)
             choice = input("히트(1) 또는 스테이(2) 선택: ")
@@ -47,6 +47,7 @@ class Action:
                 playgame.player_hand.extend(playgame.deck.distributing(1))  # 히트: 카드 1장 뽑음
             elif choice == '2':
                 self.deal_rule(playgame) #플레이어 선택에 따른 딜러의 행동(17이하면 계속 히트)
+                game.show_game(dealer_cards, players, cards_arr,True)
                 break  # 스테이: 게임 종료
         
 

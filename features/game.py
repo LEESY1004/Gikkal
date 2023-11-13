@@ -14,7 +14,7 @@ def sort_card_row(cards, start_padding = ''):
     print_cards(cat_card, start_padding)
 
 # Player의 카드들을 매개변수로 보내 상황 보여줌
-def show_game(dealer_cards, players, cards_arr):
+def show_game(dealer_cards, players, cards_arr,flag):
     dealer_padding = '\t' * 13
     dealer_margin = '\n' * 3
     single_player_card_padding = {1: '\t' * 12 + ' ' * 6, 
@@ -24,9 +24,10 @@ def show_game(dealer_cards, players, cards_arr):
                                   5: '\t' * 9 + ' ' * 6, 
                                   6: '\t' * 8 + ' ' * 7}
     
-    # padding
-    single_player_card_print(dealer_padding, 'dealer', dealer_cards, single_player_card_padding[len(dealer_cards)])
-    print(dealer_margin)
+    if flag==True:
+        # padding
+        single_player_card_print(dealer_padding, 'dealer', dealer_cards, single_player_card_padding[len(dealer_cards)])
+        print(dealer_margin)
 
     if len(players) == 1:
         single_player_card_print(dealer_padding, players[0].name, cards_arr[0], single_player_card_padding[len(cards_arr[0])])

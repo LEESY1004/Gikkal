@@ -74,6 +74,7 @@ def ascii_version_of_card(*cards, return_string=True):
 
 
 def ascii_version_of_hidden_card(*cards):
+
     """
     Essentially the dealers method of print ascii cards. This method hides the first card, shows it flipped over
     :param cards: A list of card objects, the first will be hidden
@@ -84,9 +85,13 @@ def ascii_version_of_hidden_card(*cards):
 
     # store the non-flipped over card after the one that is flipped over
     cards_except_first = ascii_version_of_card(*cards[1:], return_string=False)
+    # Hide the second card and show it flipped over
+    
+    
     for index, line in enumerate(cards_except_first):
         lines[index].append(line)
 
+    
     # make each line into a single list
     for index, line in enumerate(lines):
         lines[index] = ''.join(line)
