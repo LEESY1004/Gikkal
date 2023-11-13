@@ -14,7 +14,8 @@ def init_db(name):
 
     print(f"Sign-up: {name}")
     f = open(file_path, "w")
-    pl = Player(name)
+    pl = Player(name, [10, 0, 0, 0, 0, 0])
+    
     f.write(logs.player_object_to_txt(pl))
     f.close()
     return pl
