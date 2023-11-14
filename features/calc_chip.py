@@ -4,8 +4,6 @@
 # Blue: 10$
 # Green: 25$
 # Black: 100$
-# 이거 그냥 Black -> Green -> Blue -> Red -> Pink -> White 순으로
-# Greedy 알고리즘으로 구현해주삼
 def calc_chip(money):
     values = [100, 25, 10, 5, 2, 1]
     chips = [0] * len(values)

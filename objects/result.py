@@ -8,7 +8,7 @@ import features.logs as feature_1
 def game_start(pl):
     choice = input(CLI_I.GAME_START_MENU)
     if choice == "1":
-        pl_count= int(input("플레이어수를 작성해주세요."))
+        pl_count= int(input("Player Count: "))
         while True:
             betting = Batting(c.calc_money(pl.get_curr_chip()))
             pg = PlayGame()
@@ -36,12 +36,12 @@ def game_start(pl):
 
             # 플레이어 결과 출력
             result = Result(pg)
-            rs = result.result(player_value, dealer_value)
+            rs = result.result(player_value, dealer_value, pl)
             betting.update_total_money(rs, pl) #betting 결과 반환
             
-            play_again = input("게임을 더 하시겠습니까? (y/n): ")
+            play_again = input("Continue Game? (y/n): ")
             if play_again.lower() != 'y':
-                print("게임을 종료합니다.")
+                print("Bye.")
                 break
 
     elif choice == "2":
@@ -51,21 +51,36 @@ class Result:
     def __init__(self, pg):
         self.pg = pg
 
-    def result_player(self, player_value=None, dealer_value=None, auto_player_values=None): # 플래그 선언  ### 삭제 예정
+    # def result_player(self, player_value=None, dealer_value=None, auto_player_values=None): # 플래그 선언  ### 삭제 예정
         #player_value가 매개변수를 통해 주어지면 값이 None이 아님 
-        print("딜러의 카드:", self.pg.dealer_hand) #딜러 값 출력
-        print("플레이어의 카드:", self.pg.player_hand) #직접 플레이어 값 출력
+        # print("Dealer's Cards:", self.pg.dealer_hand) #딜러 값 출력
+        # print("Player's Cards:", self.pg.player_hand) #직접 플레이어 값 출력
 
-    def result(self, player_value, dealer_value, auto_player_values=None):
-        self.result_player(player_value=player_value) #카드값 출력
+    def result(self, player_value, dealer_value, pl, auto_player_values=None):
+        # self.result_player(player_value=player_value) #카드값 출력
 
         if dealer_value == player_value or (dealer_value > 21 and player_value > 21):
-            print("무승부: 플레이어 {} vs. 딜러 {}".format(player_value, dealer_value))
+            print("Draw! : Player {} vs. Dealer {}".format(player_value, dealer_value))
             return 1
+        # TODO 이거 파산일 때는 Your Bust! 하고 카드 경합에서 졌을 때 Your Lose! 띄워야 할듯 합니다.
         elif (dealer_value <= 21 and dealer_value >= player_value):
-            print("패배: 플레이어 {} vs. 딜러 {}".format(player_value, dealer_value))
+            self.player_win_lose_update(pl, False)
+            print("Lose! : Player {} vs. Dealer {}".format(player_value, dealer_value))
             return -1
         elif dealer_value > 21 or (player_value <= 21 and player_value > dealer_value):
-            print("승리: 플레이어 {} vs. 딜러 {}".format(player_value, dealer_value))
+            self.player_win_lose_update(pl, True)
+            print("Win! : Player {} vs. Dealer {}".format(player_value, dealer_value))
             return 2
         
+    def player_win_lose_update(self, pl, isWin):
+        if isWin:
+            pl.set_win_c(pl.get_win_c() + 1)
+        else:
+            pl.set_lose_c(pl.get_lose_c() + 1)
+
+        total_game = pl.get_win_c() + pl.get_lose_c()
+        if total_game > 0:  # Avoid division by zero
+            pl.set_win_rate((pl.get_win_c() / total_game) * 100.0)
+        else:
+            pl.set_win_rate(0.0)
+        feature_1.player_info_update(pl)
