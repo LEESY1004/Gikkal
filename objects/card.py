@@ -81,20 +81,24 @@ def ascii_version_of_hidden_card(*cards):
     :return: A string, the nice ascii version of cards
     """
     # a flipper over card. # This is a list of lists instead of a list of string becuase appending to a list is better then adding a string
-    lines = [['┌─────────┐'], ['│░░░░░░░░░│'], ['│░░░░░░░░░│'], ['│░░░░░░░░░│'], ['│░░░░░░░░░│'], ['│░░░░░░░░░│'], ['│░░░░░░░░░│'], ['│░░░░░░░░░│'], ['└─────────┘']]
+    print('\t'*13,  end='')
+    print('dealer')
+    lines = [['\t'*12 + '┌─────────┐'], ['\t'*12 + '│░░░░░░░░░│'], ['\t'*12 + '│░░░░░░░░░│'], ['\t'*12 + '│░░░░░░░░░│'], ['\t'*12 + '│░░░░░░░░░│'], 
+             ['\t'*12 + '│░░░░░░░░░│'], ['\t'*12 + '│░░░░░░░░░│'], ['\t'*12 + '│░░░░░░░░░│'], ['\t'*12 + '└─────────┘']]
+
+
 
     # store the non-flipped over card after the one that is flipped over
     cards_except_first = ascii_version_of_card(*cards[1:], return_string=False)
     # Hide the second card and show it flipped over
-    
-    
     for index, line in enumerate(cards_except_first):
         lines[index].append(line)
 
     
     # make each line into a single list
     for index, line in enumerate(lines):
-        lines[index] = ''.join(line)
+        lines[index] = ' '.join(line)
+        
 
     # convert the list into a single string
     return '\n'.join(lines)

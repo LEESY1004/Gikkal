@@ -14,8 +14,6 @@ class Action:
             # 플레이어의 카드 합 계산
             player_value = playgame.calculate_hand_value(playgame.player_hand)
             
-            ## !<-- Player가 1명일 때 구현, 작업할 때 아래 코드 주석하고 작업 부탁드립니다. -->
-
             cards_arr = []
             cards = []
             dealer_cards = []
