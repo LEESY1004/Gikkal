@@ -45,6 +45,6 @@ Choice game mode
 '''
     GAME_START_MENU = '''
 ----------------------------------------
-1. Game Start  #Select Player Count and 
+1. Select Player Count and Game Start  
 2. Back to home
 '''
