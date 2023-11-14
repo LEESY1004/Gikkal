@@ -73,9 +73,9 @@ def padding_card_arr(players, cards_arr):
         print(multi_player_start_margin[len(players)], end='')
         print(players[0].name, end='')
 
-        print(multi_player_each_margin[len(players)], end='')
+        #print(multi_player_each_margin[len(players)], end='')
         
-        print(players[1].name, end='')
+        #print(players[1].name, end='')
         
         print()
     elif len(players) == 3:
