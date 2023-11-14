@@ -24,6 +24,7 @@ class Card(object):
         self.suit = suit.capitalize()
         self.rank = rank
         self.points = self.card_values[rank]
+        self.name = f'{rank} of {suit}'
 
 def ascii_version_of_card(*cards, return_string=True):
     """

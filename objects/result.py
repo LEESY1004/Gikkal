@@ -8,19 +8,28 @@ import features.logs as feature_1
 def game_start(pl):
     choice = input(CLI_I.GAME_START_MENU)
     if choice == "1":
+        pl_count= int(input("플레이어수를 작성해주세요."))
         while True:
             betting = Batting(c.calc_money(pl.get_curr_chip()))
             pg = PlayGame()
             action = Action() 
 
-            #플레이어 게임 설정
-            pg.play_blackjack_set()
+            #플레이어 카드 분배
+            if pl_count==1:
+                pg.player_hand = pg.deck.distributing(2)
+            if pl_count==2:
+                pg.auto_player_hand_1 = pg.deck.distributing(2)
+            if pl_count==3:
+                pg.auto_player_hand_2 = pg.deck.distributing(2)
+            
+            #딜러 카드 분배
+            pg.dealer_hand = pg.deck.distributing(2)
 
             # 베팅
             betting.get_bet_amount() #betting 돈을 출력하고, betting 전반적인 시스템 호출
 
             # 플레이어 행동
-            action.hit_stand(pg, pl) 
+            action.hit_stand(pg, pl,pl_count) 
 
             player_value = pg.calculate_hand_value(pg.player_hand)
             dealer_value = pg.calculate_hand_value(pg.dealer_hand)

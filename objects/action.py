@@ -1,6 +1,7 @@
 from .playgame import PlayGame
 from .card import (Card, ascii_version_of_hidden_card)
 import features.game as game
+from .player import Player
 
 class Action:
     def deal_rule(self, playgame): 
@@ -9,30 +10,54 @@ class Action:
             playgame.dealer_hand.extend(playgame.deck.distributing(1)) # 17이하면 playgame에 import되어있는 deck의 함수 distributing에서 카드를 한장 뽑아라
             dealer_value = playgame.calculate_hand_value(playgame.dealer_hand) # 딜러의 A 카드 처리 (A는 11 또는 1로  자동계산은 이미 playgame.calculate_hand_value에 구현 되어 있음)         
 
-    def hit_stand(self, playgame, pl): #pl가 player수
+    def hit_stand(self, playgame, pl, pl_count): 
+
         while True: #2를 입력해서 스테이 상태가 될 때 까지 무한 반복
-            # 플레이어의 카드 합 계산
-            player_value = playgame.calculate_hand_value(playgame.player_hand)
-            
-            ## !<-- Player가 1명일 때 구현, 작업할 때 아래 코드 주석하고 작업 부탁드립니다. -->
+            for i in range(0,pl_count,1):
+                # 플레이어의 카드 합 계산
+                player_value = playgame.calculate_hand_value(playgame.player_hand)
+                if pl_count==2: 
+                    auto_player_value_1 = playgame.calculate_hand_value(playgame.auto_player_hand_1)
+                if pl_count==3: 
+                    auto_player_value_2 = playgame.calculate_hand_value(playgame.auto_player_hand_2)
 
-            cards_arr = []
-            cards = []
-            dealer_cards = []
-            for c in playgame.player_hand:
-                card = c.split(':')
-                cards.append(Card(card[0], card[1]))
-            cards_arr.append(cards)
+                ## !<-- Player가 1명일 때 구현, 작업할 때 아래 코드 주석하고 작업 부탁드립니다. -->
 
-            for d in playgame.dealer_hand:
-                card = d.split(":")
-                dealer_cards.append(Card(card[0], card[1]))
+                cards_arr = []
+                cards = []
+                dealer_cards = []
+                auto_player_card_1=[]
+                auto_player_card_2=[]
+                
+                for c in playgame.player_hand:
+                    card = c.split(':')
+                    cards.append(Card(card[0], card[1]))
+                cards_arr.append(cards)
+                players = [pl]
+                
+                if pl_count>=2: 
+                    for c in playgame.auto_player_hand_1:
+                        card = c.split(':')
+                        auto_player_card_1.append(Card(card[0], card[1]))
+                    cards_arr.append(auto_player_card_1)
+                    auto_player_1 = Player('AP1')
+                    players = [pl,auto_player_1]
+                    if pl_count == 3:
+                        for c in playgame.auto_player_hand_2:
+                            card = c.split(':')
+                            auto_player_card_2.append(Card(card[0], card[1]))
+                        cards_arr.append(auto_player_card_2)
+                        auto_player_2 = Player('AP2')
+                        players = [pl,auto_player_1,auto_player_2]
 
+                for d in playgame.dealer_hand:
+                    card = d.split(":")
+                    dealer_cards.append(Card(card[0], card[1]))
+
+    
             print(ascii_version_of_hidden_card(*dealer_cards))
-            players = [pl]
-            game.show_game(dealer_cards, players, cards_arr, False)
-
-            ## -->
+            game.show_game(dealer_cards, players, cards_arr, False)    
+                ## -->
 
         
             if player_value > 21:
