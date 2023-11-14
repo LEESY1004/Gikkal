@@ -48,6 +48,7 @@ def padding_card_arr(players, cards_arr):
     # double_player_card_margin = {1: '\t' * 13 + '\b' * 2,
     #                              2: '\t' * 13 + '\b' * 9}
 
+    ### TODO UI 이미조작 해서 수정해야 함!
     multi_player_start_margin = {1: '\t' * 5 + ' ' * 2,
                                 2: '\t' * 4 + ' ' * 3,
                                 3: '\t' * 3 + ' ' * 6,

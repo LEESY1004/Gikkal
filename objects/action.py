@@ -91,7 +91,6 @@ class Action:
                     card = c.split(':')
                     auto_player_card_2.append(Card(card[0], card[1]))
                 cards_arr.append(auto_player_card_2)
-
                 game.show_game(dealer_cards, players, cards_arr, True)
                 break  # 스테이: 게임 종료
 
