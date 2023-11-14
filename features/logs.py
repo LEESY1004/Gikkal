@@ -5,6 +5,7 @@ import zipfile
 import os
 from val import PATH, INFO
 import home
+import features.calc_chip as c
 
 def player_object_to_txt(pl):
     return f'''

@@ -1,16 +1,20 @@
-# White: 1$ | 5%
-# Pink: 2$50¢ | 5%
-# Red: 5$ | 10%
-# Blue: 10$ | 20%
-# Green: 25$ | 30%
-# Black: 100$ | 30%
+# White: 1$
+# Pink: 2$
+# Red: 5$
+# Blue: 10$
+# Green: 25$
+# Black: 100$
+# 이거 그냥 Black -> Green -> Blue -> Red -> Pink -> White 순으로
+# Greedy 알고리즘으로 구현해주삼
 def calc_chip(money):
-    return [(int)((money * 0.3) / 100),
-            (int)((money * 0.3) / 25),
-            (int)((money * 0.2) / 10),
-            (int)((money * 0.1) / 5),
-            (int)((money * 0.05) / 2.5),
-            (int)((money * 0.05) / 1)]
+    values = [100, 25, 10, 5, 2, 1]
+    chips = [0] * len(values)
+
+    for i in range(len(values)):
+        chips[i] = (int)(money // values[i])
+        money %= values[i]
+
+    return chips
 
 def calc_money(chips): #calc_money(chips) => chips배열 받아 money($)로 반환함
-    return (chips[0] * 100) + (chips[1] * 25) + (chips[2] * 10) + (chips[3] * 5) + (chips[4] * 2.5) + (chips[5] * 1)
+    return (int)((chips[0] * 100) + (chips[1] * 25) + (chips[2] * 10) + (chips[3] * 5) + (chips[4] * 2.5) + (chips[5] * 1))
