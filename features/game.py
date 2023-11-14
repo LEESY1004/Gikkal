@@ -48,12 +48,26 @@ def padding_card_arr(players, cards_arr):
     # double_player_card_margin = {1: '\t' * 13 + '\b' * 2,
     #                              2: '\t' * 13 + '\b' * 9}
 
-    multi_player_start_margin = {2: '\t' * 4 + ' ' * 4, 
-                                 3: '\t' * 1+' ' * 1}
-    
+    multi_player_start_margin = {1: '\t' * 5 + ' ' * 2,
+                                2: '\t' * 4 + ' ' * 3,
+                                3: '\t' * 3 + ' ' * 6,
+                                4: '\t' * 3,
+                                5: '\t' * 2 + ' ' * 2,
+                                6: '\t' * 1 + ' ' * 3}
+
     multi_player_each_margin = {2: '\t' * 13,
-                                3: '\t' * 9 + ' ' * 3}
-    
+                                3: '\t' * 9 + ' ' * 3,
+                                4:'\t'*7,
+                                5:'\t'*7,
+                                6:'\t'*7,
+                                7:'\t'*7,
+                                8:'\t'*7,
+                                9:'\t'*7,
+                                10:'\t'*7,
+                                11:'\t'*7,
+                                12:'\t'*7}
+
+
     if len(players) == 2:
         print(multi_player_start_margin[len(players)], end='')
         print(players[0].name, end='')
