@@ -55,19 +55,19 @@ class Action:
                     dealer_cards.append(Card(card[0], card[1]))
 
     
-            print(ascii_version_of_hidden_card(*dealer_cards))
+            print(ascii_version_of_hidden_card(*dealer_cards), '\n'*4)
             game.show_game(dealer_cards, players, cards_arr, False)    
                 ## -->
 
         
             if player_value > 21:
-                print("패배: 플레이어 {} vs. 딜러 {}".format(player_value, playgame.calculate_hand_value(playgame.dealer_hand)))
+                print("Your Lose! : Player {} vs. Dealer {}".format(player_value, playgame.calculate_hand_value(playgame.dealer_hand)))
                 break  # 플레이어가 21을 넘으면 패배 처리하고 종료
 
 
 
             # 플레이어의 선택 (히트 또는 스테이)
-            choice = input("히트(1) 또는 스테이(2) 선택: ")
+            choice = input("hit(1) or stay(2): ")
             if choice == '1':
                 playgame.player_hand.extend(playgame.deck.distributing(1))  # 히트: 카드 1장 뽑음
             elif choice == '2':

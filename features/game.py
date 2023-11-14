@@ -26,7 +26,7 @@ def show_game(dealer_cards, players, cards_arr,flag):
     
     if flag==True:
         # padding
-        single_player_card_print(dealer_padding, 'dealer', dealer_cards, single_player_card_padding[len(dealer_cards)])
+        single_player_card_print(dealer_padding, 'Dealer', dealer_cards, single_player_card_padding[len(dealer_cards)])
         print(dealer_margin)
 
     if len(players) == 1:
