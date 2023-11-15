@@ -1,7 +1,7 @@
 import features.logs as f
 import features.calc_chip as c
 
-class Batting:
+class Betting:
     def __init__(self, curr_money):
         self.current_bet = 0
         self.total_money = curr_money
@@ -30,9 +30,7 @@ class Batting:
             self.total_money += self.current_bet * 0
         elif result == 2:
             self.total_money += self.current_bet * 2
-
         pl.set_money(c.calc_chip(self.total_money))
         f.player_info_update(pl)
-
         print("Current money:", (self.total_money))
-        self.bet_taken = False  # 다시 bet 끝나면 초기화
+        self.bet_taken = False  # 다시 betting 끝나면 초기화

@@ -1,7 +1,7 @@
 from .playgame import PlayGame
 from .action import Action
 from val import CLI_I
-from .batting import Batting
+from .betting import Betting
 import features.calc_chip as c
 import features.logs as feature_1
 
@@ -10,34 +10,29 @@ def game_start(pl):
     if choice == "1":
         pl_count= int(input("Player Count(1~3): "))
         while True:
-            betting = Batting(c.calc_money(pl.get_curr_chip()))
+            betting = Betting(c.calc_money(pl.get_curr_chip()))
             pg = PlayGame()
             action = Action() 
 
-            #플레이어 카드 분배
-            if pl_count==1:
+            if pl_count==1: #플레이어 수에 따른 카드 분배-플레이어가 1명
                 pg.player_hand = pg.deck.distributing(2)
-            if pl_count==2:
+            if pl_count==2: #플레이어 수에 따른 카드 분배-플레이어가 2명
                 pg.auto_player_hand_1 = pg.deck.distributing(2)
-            if pl_count==3:
+            if pl_count==3: #플레이어 수에 따른 카드 분배-플레이어가 3명
                 pg.auto_player_hand_2 = pg.deck.distributing(2)
             
-            #딜러 카드 분배
-            pg.dealer_hand = pg.deck.distributing(2)
+            pg.dealer_hand = pg.deck.distributing(2) # 딜러 카드 분배
 
-            # 베팅
-            betting.get_bet_amount() #betting 돈을 출력하고, betting 전반적인 시스템 호출
+            betting.get_bet_amount() # betting 전반적인 시스템 호출
 
-            # 플레이어 행동
-            action.hit_stand(pg, pl,pl_count) 
+            action.hit_stand(pg, pl,pl_count) # 플레이어 행동(히트, 스테이)
 
             player_value = pg.calculate_hand_value(pg.player_hand)
             dealer_value = pg.calculate_hand_value(pg.dealer_hand)
 
-            # 플레이어 결과 출력
-            result = Result(pg)
+            result = Result(pg) # 플레이어 결과 출력
             rs = result.result(player_value, dealer_value, pl)
-            betting.update_total_money(rs, pl) #betting 결과 반환
+            betting.update_total_money(rs, pl) # betting 결과 반환
             
             play_again = input("Continue Game? (y/n): ")
             if play_again.lower() != 'y':
@@ -51,18 +46,10 @@ class Result:
     def __init__(self, pg):
         self.pg = pg
 
-    # def result_player(self, player_value=None, dealer_value=None, auto_player_values=None): # 플래그 선언  ### 삭제 예정
-        #player_value가 매개변수를 통해 주어지면 값이 None이 아님 
-        # print("Dealer's Cards:", self.pg.dealer_hand) #딜러 값 출력
-        # print("Player's Cards:", self.pg.player_hand) #직접 플레이어 값 출력
-
     def result(self, player_value, dealer_value, pl, auto_player_values=None):
-        # self.result_player(player_value=player_value) #카드값 출력
-
         if dealer_value == player_value or (dealer_value > 21 and player_value > 21):
             print("Draw! : Player {} vs. Dealer {}".format(player_value, dealer_value))
             return 1
-        # TODO 이거 파산일 때는 Your Bust! 하고 카드 경합에서 졌을 때 Your Lose! 띄워야 할듯 합니다.
         elif (dealer_value <= 21 and dealer_value >= player_value):
             self.player_win_lose_update(pl, False)
             print("Lose! : Player {} vs. Dealer {}".format(player_value, dealer_value))
@@ -79,7 +66,8 @@ class Result:
             pl.set_lose_c(pl.get_lose_c() + 1)
 
         total_game = pl.get_win_c() + pl.get_lose_c()
-        if total_game > 0:  # Avoid division by zero
+       
+        if total_game > 0: # 0으로 나누는 경우를 피하는 코드
             pl.set_win_rate((pl.get_win_c() / total_game) * 100.0)
         else:
             pl.set_win_rate(0.0)
