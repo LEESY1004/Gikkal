@@ -1,9 +1,11 @@
+# Chip rate
 # White: 1$
 # Pink: 2$
 # Red: 5$
 # Blue: 10$
 # Green: 25$
 # Black: 100$
+
 def calc_chip(money):
     values = [100, 25, 10, 5, 2, 1]
     chips = [0] * len(values)

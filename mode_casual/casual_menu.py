@@ -5,9 +5,9 @@ import objects.result as game
 
 def choice_menu(pl):
     menu = input(CLI_I.CHOICE_MENU)
-    if menu == "1": # game start
+    if menu == "1":
         game.game_start(pl)
-    elif menu == "2": # show game record
+    elif menu == "2":
         num = input(CLI_I.EXPORT_FILE_MENU)
         if num == '1':
             export_file(FILE.CSV, pl.name)

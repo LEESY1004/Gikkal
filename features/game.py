@@ -1,6 +1,6 @@
 import objects.card as cardOb
 
-# 주어진 카드들을 가로로 나열함.
+# print cards to rows
 def sort_card_row(cards, start_padding = ''):
     cat_card = [[] for i in range(9)]
     width_each_card = ' '
@@ -13,7 +13,7 @@ def sort_card_row(cards, start_padding = ''):
 
     print_cards(cat_card, start_padding)
 
-# Player의 카드들을 매개변수로 보내 상황 보여줌
+# print dealers, players card in terminal
 def show_game(dealer_cards, players, cards_arr,flag):
     dealer_padding = '\t' * 13
     dealer_margin = '\n' * 3
@@ -38,17 +38,6 @@ def padding_card_arr(players, cards_arr):
     width_each_card = ' '
     ranges = [(0, 11), (12, 23), (24, 35), (36, 47), (48, 59), (60, 71), (72, 83), (84, 95), (96, 107)]
 
-    # double_player_card_start_margin = {1: '\t' * 5 + ' ' * 2,
-    #                                    2: '\t' * 4 + ' ' * 3,
-    #                                    3: '\t' * 3 + ' ' * 6,
-    #                                    4: '\t' * 3,
-    #                                    5: '\t' * 2 + ' ' * 2,
-    #                                    6: '\t' * 1 + ' ' * 3}
-
-    # double_player_card_margin = {1: '\t' * 13 + '\b' * 2,
-    #                              2: '\t' * 13 + '\b' * 9}
-
-    ### TODO UI 이미조작 해서 수정해야 함!
     multi_player_start_margin = {1: '\t' * 5 + ' ' * 2,
                                 2: '\t' * 4 + ' ' * 3,
                                 3: '\t' * 3 + ' ' * 6,
@@ -57,26 +46,11 @@ def padding_card_arr(players, cards_arr):
                                 6: '\t' * 1 + ' ' * 3}
 
     multi_player_each_margin = {2: '\t' * 13,
-                                3: '\t' * 9 + ' ' * 3,
-                                4:'\t'*7,
-                                5:'\t'*7,
-                                6:'\t'*7,
-                                7:'\t'*7,
-                                8:'\t'*7,
-                                9:'\t'*7,
-                                10:'\t'*7,
-                                11:'\t'*7,
-                                12:'\t'*7}
-
+                                3: '\t' * 9 + ' ' * 3}
 
     if len(players) == 2:
         print(multi_player_start_margin[len(players)], end='')
         print(players[0].name, end='')
-
-        #print(multi_player_each_margin[len(players)], end='')
-        
-        #print(players[1].name, end='')
-        
         print()
     elif len(players) == 3:
         print(multi_player_start_margin[len(players)], end='')
