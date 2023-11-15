@@ -3,7 +3,7 @@ import pandas as pd
 import shutil
 import zipfile
 import os
-from val import PATH, INFO
+from val import PATH, INFO, CLI_I
 import home
 import features.calc_chip as c
 

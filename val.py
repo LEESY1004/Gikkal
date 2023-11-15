@@ -26,7 +26,8 @@ choice :
 1. Game Start
 2. Show game record
 3. Back to home
-4. Exit
+4. Explain rule
+5. Exit
 ----------------------------------------
 '''
     DB_MENU = '''

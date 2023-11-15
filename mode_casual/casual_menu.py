@@ -18,6 +18,9 @@ def choice_menu(pl):
     elif menu == "3":
         logs.back_to_home(pl)
     elif menu == "4":
+        print(CLI_I.EXPLAIN_RULE)
+        choice_menu(pl)
+    elif menu == "5":
         exit(0)
 
 def export_file(category,  name):
