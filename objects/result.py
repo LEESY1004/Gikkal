@@ -8,7 +8,7 @@ import features.logs as feature_1
 def game_start(pl):
     choice = input(CLI_I.GAME_START_MENU)
     if choice == "1":
-        pl_count= int(input("Player Count: "))
+        pl_count= int(input("Player Count(1~3): "))
         while True:
             betting = Batting(c.calc_money(pl.get_curr_chip()))
             pg = PlayGame()
