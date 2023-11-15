@@ -49,7 +49,7 @@ Choice game mode
 2. Back to home
 '''
 
-    EXPLAIN RULE = '''
+    EXPLAIN_RULE = '''
 
 주요 용어
 

@@ -15,7 +15,7 @@ class Action:
 
     def auto_player_rule_2(self, playgame): 
         while playgame.calculate_hand_value(playgame.auto_player_hand_2) <= 17 and playgame.deck.cards: 
-            playgame.auto_player_hand_1.extend(playgame.deck.distributing(1))  
+            playgame.auto_player_hand_2.extend(playgame.deck.distributing(1))  
 
     def hit_stand(self, playgame, pl, pl_count): 
 
